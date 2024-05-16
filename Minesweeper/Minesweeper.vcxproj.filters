@@ -23,13 +23,13 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\GameDoMin\GameDoMin\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\GameDoMin\GameDoMin\Console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\GameDoMin\GameDoMin\funtions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
