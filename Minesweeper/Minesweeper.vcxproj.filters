@@ -23,24 +23,24 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\main.cpp">
+    <ClCompile Include="Console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\Console.cpp">
+    <ClCompile Include="funtions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\funtions.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\GameDoMin\GameDoMin\Console.h">
+    <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GameDoMin\GameDoMin\funtions.h">
+    <ClInclude Include="Console.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\GameDoMin\GameDoMin\main.h">
+    <ClInclude Include="funtions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

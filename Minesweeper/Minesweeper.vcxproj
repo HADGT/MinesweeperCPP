@@ -131,14 +131,14 @@
     <Image Include="..\..\GameDoMin\source1.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\Console.cpp" />
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\funtions.cpp" />
-    <ClCompile Include="..\..\GameDoMin\GameDoMin\main.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="funtions.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\GameDoMin\GameDoMin\Console.h" />
-    <ClInclude Include="..\..\GameDoMin\GameDoMin\funtions.h" />
-    <ClInclude Include="..\..\GameDoMin\GameDoMin\main.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="funtions.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

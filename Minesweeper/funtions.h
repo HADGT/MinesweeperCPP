@@ -12,7 +12,6 @@ void thua();
 bool thongKeCo();
 
 // design
-void maximizeConsoleWindow();
 void veTieuDeGame();
 void veTrangThaiChoiGame(short STrangThai, short SCheDo, short Index);
 void veMenuChinh(short Index);

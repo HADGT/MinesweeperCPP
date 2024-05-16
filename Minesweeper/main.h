@@ -1,10 +1,5 @@
-﻿#pragma once
+#pragma once
 #include <iostream>
-#include "resource.h"
-#include <Windows.h>
-
-//#pragma comment(lib, "winm.lib")
-//#define AmThanh(fileName) PlaySound(MAKEINTRESOURCE(IDR_WAVE1), GetModuleHandleW(NULL), SND_RESOURCE | SND_ASYNC)
 
 #define ConsoleWidth 80
 #define ConsoleHieght 45
@@ -20,7 +15,7 @@ struct CauTrucBang
 	short SSoCo = 0;
 };
 
-struct CauTrucO 
+struct CauTrucO
 {
 	bool BCoBom = false;
 	bool BDaMo = false;
@@ -28,5 +23,5 @@ struct CauTrucO
 	short SBomLanCan = 0;
 };
 
-//Trang, vị trí đang chọn, tổng mục
+//Trang, v? tr� ?ang ch?n, t?ng m?c
 extern short STrang, SViTriChon, STongMuc;

@@ -1,8 +1,7 @@
-﻿#include "main.h"
+#include "main.h"
 #include "funtions.h"
 #include "Console.h"
 #include <conio.h>
-#include <windows.h> 
 
 using namespace std;
 
@@ -10,22 +9,22 @@ using namespace std;
 CauTrucBang CTBang;
 CauTrucO** CTO;
 
-/// vị trí con trỏ hiện tại
+/// v? tr� con tr? hi?n t?i
 COORD CViTriConTro;
 
-//Sử dụng phím
+//S? d?ng ph�m
 bool BSuDungPhim = false;
 
-// tọa độ x, y vẽ bảng
+// t?a ?? x, y v? b?ng
 short SToaDoX;
 short SToaDoY;
 
-// cập nhật trạng thái
+// c?p nh?t tr?ng th�i
 bool BTrangThaiChoiGame;
 
 /// <summary>
-/// con trỏ đầu dòng quản lý cả dòng đó
-/// Tạo mảng 2 chiều động
+/// con tr? ??u d�ng qu?n l� c? d�ng ?�
+/// T?o m?ng 2 chi?u ??ng
 /// </summary>
 void taoMang2ChieuDong()
 {
@@ -37,8 +36,8 @@ void taoMang2ChieuDong()
 }
 
 /// <summary>
-/// Xóa hàm ở đầu dòng rồi mới xóa hàm tổng
-/// xóa mảng 2 chiều động
+/// X�a h�m ? ??u d�ng r?i m?i x�a h�m t?ng
+/// x�a m?ng 2 chi?u ??ng
 /// </summary>
 void xoaMang2ChieuDong()
 {
@@ -72,12 +71,12 @@ void khoiTao(short SDong, short SCot, short SSoBom)
 	veTrangThaiChoiGame(1, 0, 0);
 }
 
-short toaDoX(short SX) // tọa độ x vẽ bảng
+short toaDoX(short SX) // t?a ?? x v? b?ng
 {
 	return ((SX * 2) + SToaDoX);
 }
 
-short toaDoY(short SY) // tọa độ y vẽ bảng
+short toaDoY(short SY) // t?a ?? y v? b?ng
 {
 	return (SY + SToaDoY);
 }
@@ -86,53 +85,53 @@ void veO(short SX, short SY, short SKieu)
 {
 	switch (SKieu)
 	{
-	case 0: //Rỗng màu xanh lá
-		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 10, (char*)"  ");
+	case 0: //R?ng m�u xanh l�
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 46, (char*)"  ");
 		break;
-	case 1: //Số 1 ch màu xanh dương. Từ 1 -> 8 có nền là màu trắng
-		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 9, 15, (char*)"1 ");
+	case 1: //S? 1 ch m�u xanh d??ng. T? 1 -> 8 c� n?n l� m�u tr?ng
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 25, 15, (char*)"1 ");
 		break;
-	case 2: //số 2 xanh lá
+	case 2: //s? 2 xanh l�
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 2, 15, (char*)"2 ");
 		break;
-	case 3: //số 3 đỏ
+	case 3: //s? 3 ??
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 12, 15, (char*)"3 ");
 		break;
-	case 4: //số 4 xanh dương đậm
+	case 4: //s? 4 xanh d??ng ??m
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 1, 15, (char*)"4 ");
 		break;
-	case 5: //số 5 đỏ đậm
+	case 5: //s? 5 ?? ??m
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 4, 15, (char*)"5 ");
 		break;
-	case 6: //số 6 CYAN đậm
+	case 6: //s? 6 CYAN ??m
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 2, 15, (char*)"6 ");
 		break;
-	case 7: //số 7 đen
+	case 7: //s? 7 ?en
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 15, (char*)"7 ");
 		break;
-	case 8: //số 8 hồng
+	case 8: //s? 8 h?ng
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 13, 15, (char*)"8 ");
 		break;
 	case 9: //bom
-		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 12, (char*)"* ");
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 12, (char*)"@@");
 		break;
-	case 10: //ô chẵn
+	case 10: //� ch?n
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 8, (char*)"  ");
 		break;
-	case 11: //ô lẻ
+	case 11: //� l?
 		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 7, (char*)"  ");
 		break;
-	case 12: //theo dõi con trỏ
-		setColorBGTextXY(toaDoX(SX) + 1, toaDoY(SY), 0, 13, (char*)" ");
+	case 12: //theo d�i con tr?
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 0, 13, (char*)"^^");
 		break;
-	case 13: //cắm cờ
-		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 12, 14, (char*)"P ");
+	case 13: //c?m c?
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 10, 0, (char*)"!!");
 		break;
-	case 14: //cắm cờ không có bom => cắm cờ sai
-		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 15, 6, (char*)"Px");
+	case 14: //c?m c? kh�ng c� bom => c?m c? sai
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 15, 6, (char*)"XX");
 		break;
-	case 15: //cắm cờ có bom => cắm cờ đúng
-		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 12, 14, (char*)"B ");
+	case 15: //c?m c? c� bom => c?m c? ?�ng
+		setColorBGTextXY(toaDoX(SX), toaDoY(SY), 12, 14, (char*)"VV");
 		break;
 	}
 }
@@ -146,11 +145,11 @@ void veBang()
 				veO(j, i, 13);
 			else if (CTO[i][j].SBomLanCan)
 				veO(j, i, CTO[i][j].SBomLanCan);
-			else if (CTO[i][j].BDaMo) // ô rỗng
+			else if (CTO[i][j].BDaMo) // � r?ng
 				veO(j, i, 0);
-			else if ((i + j) % 2) // ô lẻ
+			else if ((i + j) % 2) // � l?
 				veO(j, i, 11);
-			else // ô chẵn
+			else // � ch?n
 				veO(j, i, 10);
 
 			if (BSuDungPhim)
@@ -162,22 +161,22 @@ void veBang()
 void taoBomNgauNhien()
 {
 	short SSoBom = CTBang.SSoBom;
-	short SI, SJ; //SI vị trí dòng, SJ vị trí cột sẽ random
+	short SI, SJ; //SI v? tr� d�ng, SJ v? tr� c?t s? random
 	srand(time(NULL));
 	while (SSoBom)
 	{
-		/*công thức random:
-			muốn random trong khoảng x, y sẽ random() % (y - x + 1) + x
-			VD khoảng 0 -> 8 => Ran() % (8 - 0 + 1) + 0 = ran() % 9 = ran() % CTBang.SDong
+		/*c�ng th?c random:
+			mu?n random trong kho?ng x, y s? random() % (y - x + 1) + x
+			VD kho?ng 0 -> 8 => Ran() % (8 - 0 + 1) + 0 = ran() % 9 = ran() % CTBang.SDong
 		*/
 		SI = rand() % CTBang.SDong;
 		SJ = rand() % CTBang.SCot;
-		// kiểm tra vị trí random có bom hay chưa
+		// ki?m tra v? tr� random c� bom hay ch?a
 		if (CTO[SI][SJ].BCoBom)
 			continue;
 
 		CTO[SI][SJ].BCoBom = true;
-		--SSoBom; // cập nhật lại số lượng bom
+		--SSoBom; // c?p nh?t l?i s? l??ng bom
 	}
 }
 
@@ -193,19 +192,19 @@ void xuatBom()
 	}
 }
 
-void clickPhai(short SX, short SY) // cắm cờ
+void clickPhai(short SX, short SY) // c?m c?
 {
 	if (!CTO[SX][SY].BDaMo)
 	{
 		if (CTO[SX][SY].BCamCo)
 		{
-			// Nếu ô này đã được cắm cờ, bỏ cờ đi
+			// N?u � n�y ?� ???c c?m c?, b? c? ?i
 			CTO[SX][SY].BCamCo = false;
 			CTBang.SSoCo--;
 		}
 		else
 		{
-			// Kiểm tra nếu số cờ còn lại lớn hơn 0 mới cho phép cắm cờ
+			// Ki?m tra n?u s? c? c�n l?i l?n h?n 0 m?i cho ph�p c?m c?
 			if (CTBang.SSoCo < CTBang.SSoBom)
 			{
 				CTO[SX][SY].BCamCo = true;
@@ -213,8 +212,8 @@ void clickPhai(short SX, short SY) // cắm cờ
 			}
 			else
 			{
-				// Nếu không còn cờ để cắm, có thể thêm thông báo ở đây nếu muốn
-				// Ví dụ: printf("Không còn cờ để cắm!\n");
+				// N?u kh�ng c�n c? ?? c?m, c� th? th�m th�ng b�o ? ?�y n?u mu?n
+				// V� d?: printf("Kh�ng c�n c? ?? c?m!\n");
 			}
 		}
 	}
@@ -231,11 +230,11 @@ short demBomLanCan(short SX, short SY)
 	{
 		for (int j = SY - 1; j <= SY + 1; ++j)
 		{
-			//xét những vị trí không hợp lệ => tiếp tục lặp
+			//x�t nh?ng v? tr� kh�ng h?p l? => ti?p t?c l?p
 			if (i < 0 || i >= CTBang.SDong || j < 0 || j >= CTBang.SCot || (i == SX && j == SY))
 				continue;
 
-			// xét xem ô có bom hay không, có tăng đếm lên 1
+			// x�t xem � c� bom hay kh�ng, c� t?ng ??m l�n 1
 			if (CTO[i][j].BCoBom)
 				++SDem;
 		}
@@ -253,20 +252,20 @@ void moO(short SX, short SY)
 		else
 		{
 			short SSoBomLanCan = demBomLanCan(SX, SY);
-			if (SSoBomLanCan) // có bom lận cận
+			if (SSoBomLanCan) // c� bom l?n c?n
 				CTO[SX][SY].SBomLanCan = SSoBomLanCan;
-			else // ô rỗng
+			else // � r?ng
 			{
-				// duyệt các ô lân cận và gọi đệ quy
+				// duy?t c�c � l�n c?n v� g?i ?? quy
 				for (int i = SX - 1; i <= SX + 1; ++i)
 				{
 					for (int j = SY - 1; j <= SY + 1; ++j)
 					{
-						//xét những vị trí không hợp lệ => tiếp tục lặp
+						//x�t nh?ng v? tr� kh�ng h?p l? => ti?p t?c l?p
 						if (i < 0 || i >= CTBang.SDong || j < 0 || j >= CTBang.SCot || (i == SX && j == SY))
 							continue;
 
-						// gọi đệ quy
+						// g?i ?? quy
 						moO(i, j);
 					}
 				}
@@ -275,7 +274,7 @@ void moO(short SX, short SY)
 	}
 }
 
-void clickTrai(short SX, short SY) // mở ô
+void clickTrai(short SX, short SY) // m? �
 {
 	if (!CTO[SX][SY].BDaMo && !CTO[SX][SY].BCamCo)
 	{
@@ -299,7 +298,7 @@ bool thongKeCo()
 void thang()
 {
 	BTrangThaiChoiGame = false;
-	xoaMang2ChieuDong(); // giải phóng con trỏ
+	xoaMang2ChieuDong(); // gi?i ph�ng con tr?
 	STrang = 5;
 	deleteRow(4, 1);
 	veTrangThaiChoiGame(3, 3, 0);
@@ -307,50 +306,50 @@ void thang()
 
 void thua()
 {
-	// Hiện bon ẩn và kiểm tra cắm cờ đúng hay sai
+	// Hi?n bon ?n v� ki?m tra c?m c? ?�ng hay sai
 	for (int i = 0; i < CTBang.SDong; ++i)
 	{
 		for (int j = 0; j < CTBang.SCot; ++j)
 		{
-			if (CTO[i][j].BCamCo) // có cắm cờ
+			if (CTO[i][j].BCamCo) // c� c?m c?
 			{
 				if (CTO[i][j].BCoBom)
-					veO(j, i, 15); // cắm cờ đúng
+					veO(j, i, 15); // c?m c? ?�ng
 				else
-					veO(j, i, 14); // cắm cờ sai
+					veO(j, i, 14); // c?m c? sai
 			}
-			else // không cắm cờ
+			else // kh�ng c?m c?
 			{
-				if (CTO[i][j].BCoBom) // có bom => hiện bom
-					veO(j, i, 9); // hiện bom ẩn
+				if (CTO[i][j].BCoBom) // c� bom => hi?n bom
+					veO(j, i, 9); // hi?n bom ?n
 			}
 		}
 	}
 	BTrangThaiChoiGame = false;
-	xoaMang2ChieuDong(); // giải phóng con trỏ
+	xoaMang2ChieuDong(); // gi?i ph�ng con tr?
 	STrang = 4;
 	deleteRow(4, 1);
-	veTrangThaiChoiGame(2, 2, 0); // cập nhật lại trạng thái thua
+	veTrangThaiChoiGame(2, 2, 0); // c?p nh?t l?i tr?ng th�i thua
 }
 
 /// <summary>
-/// ý tưởng xử lý menu
-/// số 1: menu chính
-/// số 2: menu cấp độ
-/// số 3: đang chơi game
-/// số 4: trang thua
-/// số 5: trang thắng
-/// số 6: trang lưu game
+/// � t??ng x? l� menu
+/// s? 1: menu ch�nh
+/// s? 2: menu c?p ??
+/// s? 3: ?ang ch?i game
+/// s? 4: trang thua
+/// s? 5: trang th?ng
+/// s? 6: trang l?u game
 /// </summary>
 /// <param name="key"></param>
 
 void xuKienPhim(KEY_EVENT_RECORD key)
 {
-	if (key.bKeyDown) // có nhấn phím
+	if (key.bKeyDown) // c� nh?n ph�m
 	{
 		switch (key.wVirtualKeyCode)
 		{
-		case VK_UP: // mũi tên lên
+		case VK_UP: // m?i t�n l�n
 			switch (STrang)
 			{
 			case 1:
@@ -387,11 +386,14 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 			case 5:
 				veTrangThaiChoiGame(3, 3, (SViTriChon == 0) ? 1 : 0);
 				break;
+			case 6:
+				veTrangThaiChoiGame(1, 1, (SViTriChon == 0) ? 1 : 0);
+				break;
 			}
-			//cout << "mũi tên lên" << endl;
+			//cout << "m?i t�n l�n" << endl;
 			break;
-		case VK_DOWN: // mũi tên xuống
-			//cout << "mũi tên xuống" << endl;
+		case VK_DOWN: // m?i t�n xu?ng
+			//cout << "m?i t�n xu?ng" << endl;
 			switch (STrang)
 			{
 			case 1:
@@ -428,9 +430,12 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 			case 5:
 				veTrangThaiChoiGame(3, 3, (SViTriChon == 0) ? 1 : 0);
 				break;
+			case 6:
+				veTrangThaiChoiGame(1, 1, (SViTriChon == 0) ? 1 : 0);
+				break;
 			}
 			break;
-		case VK_LEFT: // mũi tên trái
+		case VK_LEFT: // m?i t�n tr�i
 			switch (STrang)
 			{
 			case 1:
@@ -467,10 +472,13 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 			case 5:
 				veTrangThaiChoiGame(3, 3, (SViTriChon == 0) ? 1 : 0);
 				break;
+			case 6:
+				veTrangThaiChoiGame(1, 1, (SViTriChon == 0) ? 1 : 0);
+				break;
 			}
-			//cout << "mũi tên trái" << endl;
+			//cout << "m?i t�n tr�i" << endl;
 			break;
-		case VK_RIGHT: // mũi tên phải
+		case VK_RIGHT: // m?i t�n ph?i
 			switch (STrang)
 			{
 			case 1:
@@ -507,11 +515,14 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 			case 5:
 				veTrangThaiChoiGame(3, 3, (SViTriChon == 0) ? 1 : 0);
 				break;
+			case 6:
+				veTrangThaiChoiGame(1, 1, (SViTriChon == 0) ? 1 : 0);
+				break;
 			}
-			//cout << "mũi tên phải" << endl;
+			//cout << "m?i t�n ph?i" << endl;
 			break;
-		case VK_RETURN: // phím enter
-			//cout << "phím enter" << endl;
+		case VK_RETURN: // ph�m enter
+			//cout << "ph�m enter" << endl;
 			switch (STrang)
 			{
 			case 1:
@@ -521,11 +532,11 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 					deleteRow(4, 20);
 					veMenuCapDo(0);
 				}
-				else if (SViTriChon == 1) //trang bảng điểm
+				else if (SViTriChon == 1) //trang b?ng ?i?m
 				{
 
 				}
-				else if (SViTriChon == 2) // trang thông tin
+				else if (SViTriChon == 2) // trang th�ng tin
 				{
 					STrang = 7;
 					deleteRow(4, 20);
@@ -533,31 +544,31 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 				}
 				else
 				{
-					ExitProcess(0);
+					exit(0);
 				}
 				break;
 			case 2:
-				if (SViTriChon == 0) // dễ
+				if (SViTriChon == 0) // d?
 				{
-					STrang = 3; // cập nhật lại là đang chơi game
+					STrang = 3; // c?p nh?t l?i l� ?ang ch?i game
 					deleteRow(4, 20);
 					khoiTao(9, 9, 10);
 				}
-				else if (SViTriChon == 1) //trung bình
+				else if (SViTriChon == 1) //trung b�nh
 				{
-					STrang = 3; // xập nhật lại là đang chơi game
+					STrang = 3; // x?p nh?t l?i l� ?ang ch?i game
 					deleteRow(4, 20);
 					khoiTao(16, 16, 40);
 				}
-				else if (SViTriChon == 2) // khó
+				else if (SViTriChon == 2) // kh�
 				{
-					STrang = 3; // xập nhật lại là đang chơi game
+					STrang = 3; // x?p nh?t l?i l� ?ang ch?i game
 					deleteRow(4, 20);
 					khoiTao(24, 24, 99);
 				}
 				else
 				{
-					STrang = 1; // cập nhật lại menu chính
+					STrang = 1; // c?p nh?t l?i menu ch�nh
 					deleteRow(4, 20);
 					veMenuChinh(0);
 				}
@@ -577,7 +588,7 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 				break;
 			case 5:
 				break;
-			case 6: // trang lưu game
+			case 6: // trang l?u game
 				if (SViTriChon)
 				{
 					STrang = 1;
@@ -586,20 +597,19 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 				}
 				else
 				{
-					// lưu game => xử lý file
+					// l?u game => x? l� file
 				}
 				break;
 			}
 			break;
-		case VK_ESCAPE: // phím ESC (thoát)
-			//cout << "phím ESC (thoát)" << endl;
+		case VK_ESCAPE: // ph�m ESC (tho�t)
+			//cout << "ph�m ESC (tho�t)" << endl;
 			switch (STrang)
 			{
 			case 1:
 				exit(0);
-				break;
 			case 2:
-				STrang = 1; // cập nhật lại trang menu chính
+				STrang = 1; // c?p nh?t l?i trang menu ch�nh
 				deleteRow(4, 20);
 				veMenuChinh(0);
 				break;
@@ -613,18 +623,18 @@ void xuKienPhim(KEY_EVENT_RECORD key)
 				veMenuCapDo(0);
 				break;
 			case 7:
-				STrang = 1; // cập nhật lại trang menu chính
+				STrang = 1; // c?p nh?t l?i trang menu ch�nh
 				deleteRow(4, 20);
 				veMenuChinh(0);
 				break;
 			}
 			break;
-		case ClickTrai: // phím z - mở ô
+		case ClickTrai: // ph�m z - m? �
 			clickTrai(CViTriConTro.Y, CViTriConTro.X);
-			//cout << "phím z - mở ô" << endl;
+			//cout << "ph�m z - m? �" << endl;
 			break;
-		case ClickPhai: // phím x - cắm cờ
-			//cout << "phím x - cắm cờ" << endl;
+		case ClickPhai: // ph�m x - c?m c?
+			//cout << "ph�m x - c?m c?" << endl;
 			clickPhai(CViTriConTro.Y, CViTriConTro.X);
 			break;
 		}
@@ -635,31 +645,31 @@ void xuLySuKien()
 {
 	while (1)
 	{
-		// lưu lại sự kiện hiện tại
+		// l?u l?i s? ki?n hi?n t?i
 		DWORD DWNumberOfEvents = 0;
-		// lưu lại số lượng sự kiện đã được lọc
+		// l?u l?i s? l??ng s? ki?n ?� ???c l?c
 		DWORD DWNumberOfEventsRead = 0;
 
-		// thiết bị ầu vào
+		// thi?t b? ?u v�o
 		HANDLE HConsoleInput = GetStdHandle(STD_INPUT_HANDLE);
-		//đặt sự kiện đầu vào của giao diện cho biến DWNumberOfEvents
+		//??t s? ki?n ??u v�o c?a giao di?n cho bi?n DWNumberOfEvents
 		GetNumberOfConsoleInputEvents(HConsoleInput, &DWNumberOfEvents);
 
 		if (DWNumberOfEvents)
 		{
-			// con trỏ IREventBuffer
+			// con tr? IREventBuffer
 			INPUT_RECORD* IREventBuffer = new INPUT_RECORD;
-			// đặt các sự kiện được lưu trữ vào con trỏ IREventBuffer
+			// ??t c�c s? ki?n ???c l?u tr? v�o con tr? IREventBuffer
 			ReadConsoleInput(HConsoleInput, IREventBuffer, DWNumberOfEvents, &DWNumberOfEventsRead);
 
-			// chạy vòng lặp để đọc sự kiện
+			// ch?y v�ng l?p ?? ??c s? ki?n
 			for (DWORD i = 0; i < DWNumberOfEvents; ++i)
 			{
-				if (IREventBuffer[i].EventType == KEY_EVENT) // nếu là sự kiện phím
+				if (IREventBuffer[i].EventType == KEY_EVENT) // n?u l� s? ki?n ph�m
 				{
 					xuKienPhim(IREventBuffer[i].Event.KeyEvent);
 				}
-				else if (IREventBuffer[i].EventType == MOUSE_EVENT) // nếu là sự kiện chuột
+				else if (IREventBuffer[i].EventType == MOUSE_EVENT) // n?u l� s? ki?n chu?t
 				{
 				}
 			}
@@ -668,17 +678,6 @@ void xuLySuKien()
 }
 
 // design
-void maximizeConsoleWindow()
-{
-	HWND consoleWindow = GetConsoleWindow(); // Lấy handle của cửa sổ console
-	ShowWindow(consoleWindow, SW_MAXIMIZE); // Phóng to cửa sổ console toàn bộ màn hình
-
-	// Thiết lập chế độ buffer để phù hợp với kích thước cửa sổ
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-	SMALL_RECT windowSize = { 0, 0, csbi.dwMaximumWindowSize.X - 1, csbi.dwMaximumWindowSize.Y - 1 };
-	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &windowSize);
-}
 
 void veTieuDeGame()
 {
@@ -701,14 +700,14 @@ void veTieuDeGame()
 void veTrangThaiChoiGame(short STrangThai, short SCheDo, short Index)
 {
 
-	// cập nhật lại vị trí đang chọn và tổng mục của menu
+	// c?p nh?t l?i v? tr� ?ang ch?n v� t?ng m?c c?a menu
 	SViTriChon = Index;
 	STongMuc = 2;
 
 	setColorBGTextXY(1, 3, 15, 0, (char*)"Ban Do: %d * %d", CTBang.SDong, CTBang.SCot);
 	setColorBGTextXY(1, 4, 15, 0, (char*)"Ban Bom: %d", CTBang.SSoBom - CTBang.SSoCo);
 
-	//vẽ menu thắng thua
+	//v? menu th?ng thua
 
 	if (SCheDo == 1)
 	{
@@ -731,12 +730,12 @@ void veTrangThaiChoiGame(short STrangThai, short SCheDo, short Index)
 		setColorBGTextXY((ConsoleWidth / 2) - (strlen(StrTextMenuCheDo) / 2) - 2, 4, 15, (Index == 1) ? 2 : 0, (char*)StrTextMenuCheDo);
 	}
 
-	//vẽ text trạng thái
-	if (STrangThai == 1) // đang chơi game
+	//v? text tr?ng th�i
+	if (STrangThai == 1) // ?ang ch?i game
 		setColorBGTextXY(ConsoleWidth - 22, 4, 15, 0, (char*)"Trang Thai: %s", "Dang choi");
 	if (STrangThai == 2) // thua
 		setColorBGTextXY(ConsoleWidth - 22, 4, 12, 0, (char*)"Trang Thai: %s", "Thua");
-	if (STrangThai == 3) // thắng
+	if (STrangThai == 3) // th?ng
 		setColorBGTextXY(ConsoleWidth - 22, 4, 14, 0, (char*)"Trang Thai: %s", "Thang");
 	cout << endl;
 	setColor(7);
@@ -749,37 +748,31 @@ void veTrangThaiChoiGame(short STrangThai, short SCheDo, short Index)
 
 void veMenuChinh(short Index)
 {
-	// cập nhật lại vị trí đang chọn và tổng mục của menu
+	// c?p nh?t l?i v? tr� ?ang ch?n v� t?ng m?c c?a menu
 	SViTriChon = Index;
 	STongMuc = 4;
 
-	//vẽ menu
+	//v? menu
 	const char* StrTextMenuChinh1[] = { "  GAME MOI  ", "  BANG DIEM  ", "  THONG TIN  ", "  THOAT  " };
 
 	for (int i = 0; i < STongMuc; ++i)
 	{
-		char* copy1 = _strdup(StrTextMenuChinh1[i]);
-		setColorBGTextXY((ConsoleWidth / 2) - (strlen(StrTextMenuChinh1[i]) / 2), 7 + i, 15, (Index == i) ? 5 : 0, copy1);
-		// Free the allocated memory after use
-		free(copy1);
+		setColorBGTextXY((ConsoleWidth / 2) - (strlen(StrTextMenuChinh1[i]) / 2), 7 + i, 15, (Index == i) ? 5 : 0, (char*)(StrTextMenuChinh1[i]));
 	}
 }
 
 void veMenuCapDo(short Index)
 {
-	// cập nhật lại vị trí đang chọn và tổng mục của menu
+	// c?p nh?t l?i v? tr� ?ang ch?n v� t?ng m?c c?a menu
 	SViTriChon = Index;
 	STongMuc = 4;
 
-	//vẽ menu
+	//v? menu
 	const char* StrTextMenuCapDo[] = { "  DE (9 * 9 VA 10 BOM) ", "  TRUNG BINH (16 * 16 VA 40 BOM)  ", "  KHO (24 * 24 VA 99 BOM)  ", "  TRO VE  " };
 	setColorBGTextXY((ConsoleWidth / 2) - 7, 4, 15, 2, (char*)"  CHON CAP DO  ");
 	for (int i = 0; i < STongMuc; ++i)
 	{
-		char* copy2 = _strdup(StrTextMenuCapDo[i]);
-		setColorBGTextXY((ConsoleWidth / 2) - (strlen(StrTextMenuCapDo[i]) / 2), 6 + i, 15, (Index == i) ? 5 : 0, copy2);
-		// Free the allocated memory after use
-		free(copy2);
+		setColorBGTextXY((ConsoleWidth / 2) - (strlen(StrTextMenuCapDo[i]) / 2), 6 + i, 15, (Index == i) ? 5 : 0, (char*)(StrTextMenuCapDo[i]));
 	}
 }
 
